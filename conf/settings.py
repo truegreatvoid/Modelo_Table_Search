@@ -25,7 +25,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'gestao_notas',
+    'table',
     "django_htmx",
     'django_extensions',
 ]

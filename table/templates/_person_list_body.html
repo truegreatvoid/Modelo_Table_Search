@@ -1,0 +1,36 @@
+{% for person in people %}
+<tr>
+  <td>{{ person.name }}</td>
+  <td>{{ person.address }}</td>
+  <td>{{ person.city }}</td>
+  <td>{{ person.state }}</td>
+  <td>{{ person.phone_number }}</td>
+  <td>{{ person.birth_date }}</td>
+  <td>{{ person.occupation }}</td>
+</tr>
+{% empty %}
+<tr>
+  <td colspan="8">Refine sua consulta!</td>
+</tr>
+{% endfor %}
+
+{% if page_obj.has_next %}
+<tr>
+  <td colspan="8">
+    <div id="pagination">
+      <button hx-get="{% url 'table:person_list' %}?page={{ page_obj.next_page_number }}" hx-target="#results" hx-swap="beforeend" hx-indicator="#loading" class="btn btn-primary">
+        Carregar mais
+      </button>
+    </div>
+    <div id="loading" style="display: none;">
+      <img src="loading.gif" alt="Carregando..." />
+    </div>
+  </td>
+</tr>
+{% else %}
+<tr>
+  <td colspan="8">
+    <div>Fim dos dados, refaça sua pesquisa!</div>
+  </td>
+</tr>
+{% endif %}
